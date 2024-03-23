@@ -19,6 +19,14 @@ from PIL import Image
 import pymysql
 import pafy
 
+csp_rules = {
+    "frame-src": "'self'",
+    "object-src": "'self' blob;"
+}
+st.set_page_config(
+    page_title="Resume Parser",
+    csp=csp_rules
+)
 def show_pdf(file_path):
     with open(file_path, "rb") as f:
         base64_pdf = base64.b64encode(f.read()).decode('utf-8')
